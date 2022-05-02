@@ -1,0 +1,14 @@
+((name) :quickload ("spinneret") :use (:cl :spinneret))
+(with-html
+    (:html
+     (:body
+      (:h1 "Hello" (or name "world!"))
+      (if name
+        (let ((length (length name)))
+          (:p "did you know that there are" length "characters in your name? wow")
+	  (:p "the square root of" length "is" (sqrt length)))
+	(:p "welcome to lisponal home page"))
+      (:form :method :get
+	     (:p "Enter your name:"
+		 (:input :type :text :name "name")
+		 (:input :type :submit))))))
